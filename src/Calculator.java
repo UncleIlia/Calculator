@@ -7,14 +7,13 @@ public class Calculator {
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
 
-    Predicate<Integer> isNotNull = value -> value != 0;
+    Predicate<Integer> isNotNull = value -> value == 0;
 
     BinaryOperator<Integer> devide = (x, y) -> {
         if (isNotNull.test(y)) {
+            return Integer.MAX_VALUE;
+        } else
             return x / y;
-        } else {
-            throw new ArithmeticException("Деление на ноль.");
-        }
     };
 
     UnaryOperator<Integer> pow = x -> x * x;
